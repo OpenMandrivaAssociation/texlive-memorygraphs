@@ -1,6 +1,6 @@
 Name:		texlive-memorygraphs
 Version:	49631
-Release:	1
+Release:	2
 Summary:	TikZ styles to typeset graphs of program memory
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/memorygraphs
