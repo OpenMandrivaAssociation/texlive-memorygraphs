@@ -1,38 +1,23 @@
-Name:		texlive-memorygraphs
-Version:	49631
-Release:	2
+%global tl_name memorygraphs
+%global tl_revision 49631
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	0.1.1
+Release:	%{tl_revision}.1
 Summary:	TikZ styles to typeset graphs of program memory
 Group:		Publishing
-URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/memorygraphs
+URL:		https://www.ctan.org/tex-archive/graphics/pgf/contrib/memorygraphs
 License:	lppl1.3
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/memorygraphs.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/memorygraphs.doc.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/memorygraphs.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/memorygraphs.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-This package defines some TikZ styles and adds anchors to
-existing styles that ease the declaration of "memory graphs".
-It is intended for graphs that represent the memory of a
-computer program during its execution.
+This package defines some TikZ styles and adds anchors to existing
+styles that ease the declaration of "memory graphs". It is intended for
+graphs that represent the memory of a computer program during its
+execution.
 
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%{_texmfdistdir}/tex/latex/memorygraphs
-%doc %{_texmfdistdir}/doc/latex/memorygraphs
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
